@@ -1,0 +1,21 @@
+<%- include('layout-head') %>
+
+<section class="panel">
+  <h1>Welcome, <%= user.name %></h1>
+  <p><strong>Email:</strong> <%= user.email %></p>
+  <p><strong>Role:</strong> <%= user.role %></p>
+</section>
+
+<section>
+  <h2>Recent Courses</h2>
+  <div class="list">
+    <% courses.forEach((course) => { %>
+      <a class="row" href="/courses/<%= course.id %>">
+        <span><%= course.title %></span>
+        <small><%= course.teacher_name %></small>
+      </a>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('layout-foot') %>

@@ -1,0 +1,40 @@
+<%- include('../layout-head') %>
+
+<section class="panel">
+  <div class="title-row">
+    <div>
+      <h1><%= course.title %></h1>
+      <p><%= course.description %></p>
+      <small>Teacher: <%= course.teacher_name %></small>
+    </div>
+
+    <% if (canManage) { %>
+      <div class="actions">
+        <a class="button" href="/courses/<%= course.id %>/edit">Edit</a>
+        <form action="/courses/<%= course.id %>/delete" method="post" class="inline">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<section class="title-row">
+  <h2>Lessons</h2>
+  <% if (canManage) { %>
+    <a class="button" href="/lessons/new?course_id=<%= course.id %>">New lesson</a>
+  <% } %>
+</section>
+
+<div class="list">
+  <% lessons.forEach((lesson) => { %>
+    <a class="row" href="/lessons/<%= lesson.id %>">
+      <span><%= lesson.title %></span>
+      <% if (lesson.file_name) { %>
+        <small>Includes file</small>
+      <% } %>
+    </a>
+  <% }) %>
+</div>
+
+<%- include('../layout-foot') %>

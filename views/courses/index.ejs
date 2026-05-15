@@ -1,0 +1,23 @@
+<%- include('../layout-head') %>
+
+<section class="title-row">
+  <div>
+    <h1>Courses</h1>
+    <p>Browse the available learning material.</p>
+  </div>
+
+  <% if (user.role === 'teacher' || user.role === 'admin') { %>
+    <a class="button" href="/courses/new">New course</a>
+  <% } %>
+</section>
+
+<div class="list">
+  <% courses.forEach((course) => { %>
+    <a class="row" href="/courses/<%= course.id %>">
+      <span><%= course.title %></span>
+      <small>Teacher: <%= course.teacher_name %></small>
+    </a>
+  <% }) %>
+</div>
+
+<%- include('../layout-foot') %>

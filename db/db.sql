@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT NOT NULL,
+  name VARCHAR(250) NOT NULL,
+  email VARCHAR(250) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  role VARCHAR(50) NOT NULL DEFAULT 'student',
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS courses (
+  id INT AUTO_INCREMENT NOT NULL,
+  title VARCHAR(250) NOT NULL,
+  description TEXT,
+  teacher_id INT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  CONSTRAINT courses_teacher_id_fk
+    FOREIGN KEY (teacher_id) REFERENCES users(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS lessons (
+  id INT AUTO_INCREMENT NOT NULL,
+  course_id INT NOT NULL,
+  title VARCHAR(250) NOT NULL,
+  content TEXT NOT NULL,
+  file_name VARCHAR(255),
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  CONSTRAINT lessons_course_id_fk
+    FOREIGN KEY (course_id) REFERENCES courses(id)
+    ON DELETE CASCADE
+);

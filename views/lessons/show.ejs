@@ -1,0 +1,27 @@
+<%- include('../layout-head') %>
+
+<article class="panel">
+  <div class="title-row">
+    <div>
+      <h1><%= lesson.title %></h1>
+      <p><%= lesson.content %></p>
+    </div>
+
+    <% if (canManage) { %>
+      <div class="actions">
+        <a class="button" href="/lessons/<%= lesson.id %>/edit">Edit</a>
+        <form action="/lessons/<%= lesson.id %>/delete" method="post" class="inline">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+
+  <% if (lesson.file_name) { %>
+    <p><a href="/lessons/uploads/<%= lesson.file_name %>">Open lesson file</a></p>
+  <% } %>
+
+  <p><a href="/courses/<%= lesson.course_id %>">Back to course</a></p>
+</article>
+
+<%- include('../layout-foot') %>

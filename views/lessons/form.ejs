@@ -1,0 +1,36 @@
+<%- include('../layout-head') %>
+
+<section class="panel narrow">
+  <h1><%= title %></h1>
+
+  <% if (errors.length > 0) { %>
+    <ul class="error">
+      <% errors.forEach((error) => { %>
+        <li><%= error %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form action="<%= action %>" method="post" enctype="multipart/form-data" class="form">
+    <input type="hidden" name="course_id" value="<%= values.course_id || course.id %>" />
+
+    <label>
+      Title
+      <input type="text" name="title" value="<%= values.title || '' %>" required />
+    </label>
+
+    <label>
+      Content
+      <textarea name="content" rows="7" required><%= values.content || '' %></textarea>
+    </label>
+
+    <label>
+      File
+      <input type="file" name="file" />
+    </label>
+
+    <button type="submit">Save lesson</button>
+  </form>
+</section>
+
+<%- include('../layout-foot') %>

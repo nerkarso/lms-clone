@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> | LMS</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="/courses" class="brand">LMS</a>
+      <nav>
+        <% if (user) { %>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/courses">Courses</a>
+          <% if (user.role === 'admin') { %>
+            <a href="/admin/users">Users</a>
+          <% } %>
+          <form action="/logout" method="post" class="inline">
+            <button type="submit">Logout</button>
+          </form>
+        <% } else { %>
+          <a href="/login">Login</a>
+        <% } %>
+      </nav>
+    </header>
+    <main class="page">

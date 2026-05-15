@@ -1,0 +1,45 @@
+<%- include('../layout-head') %>
+
+<section class="panel narrow">
+  <h1>Login</h1>
+
+  <% if (error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+
+  <form action="/login" method="post" class="form">
+    <label>
+      Email
+      <input id="email" type="email" name="email" value="<%= values.email || '' %>" required />
+    </label>
+
+    <label>
+      Password
+      <input id="password" type="password" name="password" required minlength="8" />
+    </label>
+
+    <div class="quick-login" aria-label="Quick login accounts">
+      <button type="button" data-email="admin@example.com">Admin</button>
+      <button type="button" data-email="teacher@example.com">Teacher</button>
+      <button type="button" data-email="student@example.com">Student</button>
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+</section>
+
+<script>
+  const emailInput = document.querySelector('#email');
+  const passwordInput = document.querySelector('#password');
+  const quickLoginButtons = document.querySelectorAll('[data-email]');
+
+  quickLoginButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      emailInput.value = button.dataset.email;
+      passwordInput.value = 'password123';
+      emailInput.focus();
+    });
+  });
+</script>
+
+<%- include('../layout-foot') %>

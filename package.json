@@ -2,8 +2,9 @@
   "name": "lms",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --exec \"node --env-file=.env\" server.js",
+    "dev": "nodemon --env-file=.env server.js",
     "start": "node --env-file=.env server.js",
+    "start:prod": "node server.js",
     "db:setup": "node --env-file=.env scripts/db-setup.js",
     "db:seed": "node --env-file=.env scripts/db-seed.js",
     "format": "npx prettier --write .",

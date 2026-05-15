@@ -23,7 +23,7 @@ const connection = await mysql.createConnection({
 });
 
 try {
-  const schemaPath = path.join(rootDir, 'db.sql');
+  const schemaPath = path.join(rootDir, 'db/schema.sql');
   const schema = await fs.readFile(schemaPath, 'utf8');
 
   await connection.query(`CREATE DATABASE IF NOT EXISTS \`${databaseName}\``);

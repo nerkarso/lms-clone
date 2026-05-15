@@ -37,13 +37,19 @@ Update the database username and password if your MySQL setup is different.
 
 ## Database Setup
 
-Create the development database and run the schema from `db/db.sql`:
+Create the development database and run the schema from `db/schema.sql`:
 
 ```bash
-npm run seed
+npm run db:setup
 ```
 
-The seed command uses the database connection from `.env`. It creates `DB_NAME` if it does not exist, then runs `db/db.sql`.
+Seed the database with initial data:
+
+```bash
+npm run db:seed
+```
+
+The seed command uses the database connection from `.env`. It creates `DB_NAME` if it does not exist.
 
 ## Start The App
 
@@ -75,8 +81,9 @@ routes/                App routes
 views/                 EJS templates
 public/style.css       CSS
 uploads/               Uploaded lesson files
-db/db.sql              Database schema
-scripts/seed.js        Creates the database and runs db/db.sql
+db/schema.sql              Database schema
+scripts/db-setup.js    Sets up the database schema
+scripts/db-seed.js     Seeds initial data
 tests/e2e/             End-to-end tests
 ```
 

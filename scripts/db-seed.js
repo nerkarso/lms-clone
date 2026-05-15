@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-const seedPath = path.join(rootDir, 'seed.sql');
+const seedPath = path.join(rootDir, 'db/seed.sql');
 
 try {
   const seedSql = await fs.readFile(seedPath, 'utf8');

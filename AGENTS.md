@@ -20,16 +20,16 @@ The app is intentionally simple and readable for students. Prefer direct Express
 ## Setup Commands
 
 - Install dependencies: `npm install`
-- Create the configured development database and run `db/db.sql`: `npm run seed`
+- Create the configured development database and run `db/schema.sql`: `npm run db:setup`
 - Create local environment: copy from `.env.example` and create `.env`.
 - Create test environment: `.env.test` should point to a separate database whose name includes `test`.
-- Database schema reference: `db/db.sql`
+- Database schema reference: `db/schema.sql`
 
 ## Development Workflow
 
 - Start the development server: `npm run dev`
 - Start without watch mode: `npm start`
-- Set up the development database: `npm run seed`
+- Set up the development database: `npm run db:setup`
 - Main Express app and server entrypoint: `server.js`
 - Database pool: `config/db.js`
 - Routes live in `routes/`

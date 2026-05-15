@@ -37,7 +37,7 @@ export async function resetTestDatabase() {
     SET FOREIGN_KEY_CHECKS = 1;
   `);
 
-  const dbSqlPath = path.resolve('db', 'db.sql');
+  const dbSqlPath = path.resolve('db', 'schema.sql');
   const dbSql = await fs.readFile(dbSqlPath, 'utf8');
   await connection.query(dbSql);
 
